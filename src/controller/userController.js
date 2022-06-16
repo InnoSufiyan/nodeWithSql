@@ -20,7 +20,7 @@ export const addUsers = (req, res) => {
     throw new Error('Please Add all the fields');
   }
   const post = { name: req.body.name, designation: req.body.designation };
-  const sql = 'Insert into employee SET ?';
+  const sql = 'INSERT INTO employee SET ?';
   const query = dbConnection.query(sql, post, (err) => {
     if (err) {
       logger.error('Error', err);
@@ -35,7 +35,7 @@ export const updateUser = (req, res) => {
     throw new Error('Please Add updated Name');
   }
   const newName = req.body.updateName;
-  const sql = `Update employee set name = '${newName}' where id = ${req.params.id}`;
+  const sql = `UPDATE employee SET name = '${newName}' where id = ${req.params.id}`;
   const query = dbConnection.query(sql, (err) => {
     if (err) {
       logger.error('Error', err);
@@ -46,7 +46,7 @@ export const updateUser = (req, res) => {
 
 //deleteUser
 export const deleteUser = (req, res) => {
-  const sql = `Delete from employee where id = ${req.params.id}`;
+  const sql = `DELETE FROM employee WHERE id = ${req.params.id}`;
   const query = dbConnection.query(sql, (err) => {
     if (err) {
       logger.error('Error', err);
